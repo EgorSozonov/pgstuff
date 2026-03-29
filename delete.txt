@@ -1,0 +1,1 @@
+psql -U postgres -p 5589 < db3.sql

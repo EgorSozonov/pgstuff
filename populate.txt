@@ -1,0 +1,1 @@
+psql -U %dbname_ddl -p 5589 -d %dbname < db2.sql
