@@ -16,6 +16,12 @@ insert into string_tension(
    material_and_winding_e, manufacturer
 ) 
 values
+   ('ECG23', 1,  0.01, 64,  7.35, 1, 'D''Addario'),
+   ('ECG23', 2, 0.014, 59,  8.07, 1, 'D''Addario'),
+   ('ECG23', 3,  0.02, 55,  10.8, 2, 'D''Addario'),
+   ('ECG23', 4, 0.028, 50, 11.43, 2, 'D''Addario'),
+   ('ECG23', 5, 0.038, 45, 10.75, 2, 'D''Addario'),
+   ('ECG23', 6, 0.048, 40,  9.71, 2, 'D''Addario'),
    ('ECG26', 1, 0.013, 64, 12.44, 1, 'D''Addario'),
    ('ECG26', 2, 0.017, 59, 11.94, 1, 'D''Addario'),
    ('ECG26', 3, 0.026, 55, 18.07, 2, 'D''Addario'),
@@ -96,5 +102,4 @@ BEGIN
    return teh_string.tension_kg * freq_multiplier * freq_multiplier 
       * scale_multiplier * scale_multiplier;
 END; $calc_tension$ LANGUAGE plpgsql;
-
 
