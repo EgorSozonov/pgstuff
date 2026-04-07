@@ -1,5 +1,6 @@
 CREATE or replace FUNCTION dev.current_status_e(v smallint)
 RETURNS text 
+immutable
 AS $current_status_e$
 declare
    workPath text;
