@@ -72,13 +72,14 @@ BEGIN
    typeQ := format(
       $$ 
       select json_agg(row_to_json(a))::text from (
-         select 
-            column_name as col,
-            CASE WHEN data_type = 'USER-DEFINED' THEN 'text' ELSE data_type END as ty
-         from information_schema.columns
-         where table_name = '__v_%I'
+          select 
+             column_name as col,
+             CASE when data_type = 'USER-DEFINED' then 'text' else data_type END as ty
+          from information_schema.columns
+          where table_name = '__v_%I'
       ) as a
-      $$, exportName, exportName);
+      $$, exportName, exportName
+   );
    
    --execute typeQ into metadata;
    --return next metadata; 
@@ -128,7 +129,8 @@ BEGIN
          from information_schema.columns
          where table_name = '__v_%I'
       ) as a
-      $$, exportName, exportName);
+      $$, exportName, exportName
+   );
    
    execute format(
       $$copy(%s) to '%s%s.tabm' with (format text, header false)$$, 
