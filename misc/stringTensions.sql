@@ -34,6 +34,12 @@ values
    ('ECG25', 4, 0.032, 50, 13.7,  2, 'D''Addario'),
    ('ECG25', 5, 0.042, 45, 12.93, 2, 'D''Addario'),
    ('ECG25', 6, 0.052, 40, 10.75, 2, 'D''Addario'),
+   ('EJ45', 1, 0.028, 64, 7.35, 5, 'D''Addario'),
+   ('EJ45', 2, 0.032, 59, 5.44, 5, 'D''Addario'),
+   ('EJ45', 3, 0.040, 55, 5.40, 5, 'D''Addario'),
+   ('EJ45', 4, 0.029, 50, 7.08, 7, 'D''Addario'),
+   ('EJ45', 5, 0.035, 45, 7.21, 7, 'D''Addario'),
+   ('EJ45', 6, 0.043, 40, 6.44, 7, 'D''Addario'),
    ('ECG24', 1, 0.011, 64,  8.89, 1, 'D''Addario'),
    ('ECG24', 2, 0.015, 59,  9.29, 1, 'D''Addario'),
    ('ECG24', 3, 0.022, 55, 13.01, 2, 'D''Addario'),
@@ -41,8 +47,7 @@ values
    ('ECG24', 5, 0.040, 45,  12.2, 2, 'D''Addario'),
    ('ECG24', 6, 0.050, 40, 10.07, 2, 'D''Addario'),
    ('ECG24', 7, 0.065, 35,  9.98, 2, 'D''Addario')
-;
-
+on conflict do nothing;
 
 -- as dev
 CREATE or replace FUNCTION dev.material_and_winding_e(v smallint)
