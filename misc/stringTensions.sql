@@ -22,31 +22,37 @@ values
    ('ECG23', 4, 0.028, 50, 11.43, 2, 'D''Addario'),
    ('ECG23', 5, 0.038, 45, 10.75, 2, 'D''Addario'),
    ('ECG23', 6, 0.048, 40,  9.71, 2, 'D''Addario'),
-   ('ECG26', 1, 0.013, 64, 12.44, 1, 'D''Addario'),
-   ('ECG26', 2, 0.017, 59, 11.94, 1, 'D''Addario'),
-   ('ECG26', 3, 0.026, 55, 18.07, 2, 'D''Addario'),
-   ('ECG26', 4, 0.035, 50, 16.26, 2, 'D''Addario'),
-   ('ECG26', 5, 0.045, 45, 15.11, 2, 'D''Addario'),
-   ('ECG26', 6, 0.056, 40, 12.54, 2, 'D''Addario'),
-   ('ECG25', 1, 0.012, 64, 10.61, 1, 'D''Addario'),
-   ('ECG25', 2, 0.016, 59, 10.57, 1, 'D''Addario'),
-   ('ECG25', 3, 0.024, 55, 15.42, 2, 'D''Addario'),
-   ('ECG25', 4, 0.032, 50, 13.7,  2, 'D''Addario'),
-   ('ECG25', 5, 0.042, 45, 12.93, 2, 'D''Addario'),
-   ('ECG25', 6, 0.052, 40, 10.75, 2, 'D''Addario'),
-   ('EJ45', 1, 0.028, 64, 7.35, 5, 'D''Addario'),
-   ('EJ45', 2, 0.032, 59, 5.44, 5, 'D''Addario'),
-   ('EJ45', 3, 0.040, 55, 5.40, 5, 'D''Addario'),
-   ('EJ45', 4, 0.029, 50, 7.08, 7, 'D''Addario'),
-   ('EJ45', 5, 0.035, 45, 7.21, 7, 'D''Addario'),
-   ('EJ45', 6, 0.043, 40, 6.44, 7, 'D''Addario'),
    ('ECG24', 1, 0.011, 64,  8.89, 1, 'D''Addario'),
    ('ECG24', 2, 0.015, 59,  9.29, 1, 'D''Addario'),
    ('ECG24', 3, 0.022, 55, 13.01, 2, 'D''Addario'),
    ('ECG24', 4, 0.030, 50, 12.11, 2, 'D''Addario'),
    ('ECG24', 5, 0.040, 45,  12.2, 2, 'D''Addario'),
    ('ECG24', 6, 0.050, 40, 10.07, 2, 'D''Addario'),
-   ('ECG24', 7, 0.065, 35,  9.98, 2, 'D''Addario')
+   ('ECG24', 7, 0.065, 35,  9.98, 2, 'D''Addario'),
+   ('ECG25', 1, 0.012, 64, 10.61, 1, 'D''Addario'),
+   ('ECG25', 2, 0.016, 59, 10.57, 1, 'D''Addario'),
+   ('ECG25', 3, 0.024, 55, 15.42, 2, 'D''Addario'),
+   ('ECG25', 4, 0.032, 50, 13.7,  2, 'D''Addario'),
+   ('ECG25', 5, 0.042, 45, 12.93, 2, 'D''Addario'),
+   ('ECG25', 6, 0.052, 40, 10.75, 2, 'D''Addario'),
+   ('ECG26', 1, 0.013, 64, 12.44, 1, 'D''Addario'),
+   ('ECG26', 2, 0.017, 59, 11.94, 1, 'D''Addario'),
+   ('ECG26', 3, 0.026, 55, 18.07, 2, 'D''Addario'),
+   ('ECG26', 4, 0.035, 50, 16.26, 2, 'D''Addario'),
+   ('ECG26', 5, 0.045, 45, 15.11, 2, 'D''Addario'),
+   ('ECG26', 6, 0.056, 40, 12.54, 2, 'D''Addario'),
+   ('EJ45', 1, 0.028, 64, 7.35, 5, 'D''Addario'),
+   ('EJ45', 2, 0.032, 59, 5.44, 5, 'D''Addario'),
+   ('EJ45', 3, 0.040, 55, 5.40, 5, 'D''Addario'),
+   ('EJ45', 4, 0.029, 50, 7.08, 8, 'D''Addario'),
+   ('EJ45', 5, 0.035, 45, 7.21, 8, 'D''Addario'),
+   ('EJ45', 6, 0.043, 40, 6.44, 8, 'D''Addario'),
+   ('CF128', 1, 0.027, 64, 6.9, 5, 'Thomastik-Infeld'),
+   ('CF128', 2, 0.031, 59, 5.5, 5, 'Thomastik-Infeld'),
+   ('CF128', 3, 0.027, 55, 6.5, 7, 'Thomastik-Infeld'),
+   ('CF128', 4, 0.030, 50, 6.5, 7, 'Thomastik-Infeld'),
+   ('CF128', 5, 0.035, 45, 6.4, 7, 'Thomastik-Infeld'),
+   ('CF128', 6, 0.045, 40, 6.4, 7, 'Thomastik-Infeld')
 on conflict do nothing;
 
 -- as dev
@@ -65,6 +71,7 @@ BEGIN
    when 5 then return 'Naked nylon';
    when 6 then return 'Nylon, roundwound by copper';
    when 7 then return 'Nylon, flatwound by steel';
+   when 8 then return 'Nylon, roundwound by steel';
    else raise 'unknown value % in material_and_winding enum', v;
    end case;
 END; $material_and_winding_e$ LANGUAGE plpgsql;
@@ -107,4 +114,11 @@ BEGIN
    return teh_string.tension_kg * freq_multiplier * freq_multiplier 
       * scale_multiplier * scale_multiplier;
 END; $calc_tension$ LANGUAGE plpgsql;
+
+
+--select dev.calc_tension_at_length('ECG23', 1, 66, 67) as "first",
+--       dev.calc_tension_at_length('ECG23', 2, 61, 67) as snd,
+--       dev.calc_tension_at_length('CF128', 3, 56, 67) as third,
+--       dev.calc_tension_at_length('CF128', 4, 51, 67) as fourth,
+--       dev.calc_tension_at_length('CF128', 5, 44, 67) as fifth;
 
