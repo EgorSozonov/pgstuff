@@ -56,7 +56,7 @@ values
 on conflict do nothing;
 
 -- as dev
-CREATE or replace FUNCTION dev.material_and_winding_e(v smallint)
+create or replace function material_and_winding_e(v smallint)
 RETURNS text 
 immutable
 AS $material_and_winding_e$
@@ -78,9 +78,9 @@ END; $material_and_winding_e$ LANGUAGE plpgsql;
 
 
 -- as dev
--- example: select dev.calc_tension('ECG26', 6, 38);
-CREATE or replace FUNCTION dev.calc_tension(set_name_arg text, string_id_arg integer, note_arg integer)
-RETURNS text 
+-- example: select calc_tension('ECG26', 6, 38);
+create or replace function calc_tension(set_name_arg text, string_id_arg integer, note_arg integer)
+returns text 
 immutable
 AS $calc_tension$
 declare
@@ -95,8 +95,8 @@ BEGIN
 END; $calc_tension$ LANGUAGE plpgsql;
 
 -- as dev
--- example: select dev.calc_tension_at_length('ECG26', 6, 38, 68.5);
-CREATE or replace FUNCTION dev.calc_tension_at_length(
+-- example: select calc_tension_at_length('ECG26', 6, 38, 68.5);
+create or replace function calc_tension_at_length(
    set_name_arg text, string_id_arg integer, note_arg integer, scale_length_cm double precision
 )
 RETURNS text 
@@ -116,9 +116,9 @@ BEGIN
 END; $calc_tension$ LANGUAGE plpgsql;
 
 
---select dev.calc_tension_at_length('ECG23', 1, 66, 67) as "first",
---       dev.calc_tension_at_length('ECG23', 2, 61, 67) as snd,
---       dev.calc_tension_at_length('CF128', 3, 56, 67) as third,
---       dev.calc_tension_at_length('CF128', 4, 51, 67) as fourth,
---       dev.calc_tension_at_length('CF128', 5, 44, 67) as fifth;
+--select calc_tension_at_length('ECG23', 1, 66, 67) as "first",
+--       calc_tension_at_length('ECG23', 2, 61, 67) as snd,
+--       calc_tension_at_length('CF128', 3, 56, 67) as third,
+--       calc_tension_at_length('CF128', 4, 51, 67) as fourth,
+--       calc_tension_at_length('CF128', 5, 44, 67) as fifth;
 
