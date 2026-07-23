@@ -140,8 +140,8 @@ insert into worker(id, name) values (uuidv7(), 'John'), (uuidv7(), 'Alice');
    
 -- API functions
 create or replace function new_task(
-   name_arg text, queue_name text, weight integer, deadline timestamptz,
-   author_id uuid
+   name_arg text, queue_name text, weight integer, author_id uuid, 
+   deadline timestamptz default '2199-01-01 00:00:00'
 )
 RETURNS void 
 AS $new_task$
@@ -168,11 +168,11 @@ BEGIN
    );
 END; $new_task$ LANGUAGE plpgsql;
 
-select new_task('Groom the lawn'::text, 'Programming'::text, 2,  '2199-01-01 00:00:00', (select id::uuid from worker limit 1));
+select new_task('Groom the lawn', 'Programming'::text, 2,  (select id::uuid from worker limit 1));
 
 
 create or replace function new_subtask(
-   parent_id uuid, name_arg text, weight integer, deadline timestamptz, author_id uuid
+   parent_id uuid, name_arg text, weight integer, author_id uuid, deadline timestamptz default '2199-01-01 00:00:00'
 )
 RETURNS void 
 AS $new_task$

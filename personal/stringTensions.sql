@@ -41,18 +41,18 @@ values
    ('ECG26', 4, 0.035, 50, 16.26, 2, 'D''Addario'),
    ('ECG26', 5, 0.045, 45, 15.11, 2, 'D''Addario'),
    ('ECG26', 6, 0.056, 40, 12.54, 2, 'D''Addario'),
-   ('EJ45', 1, 0.028, 64, 7.35, 5, 'D''Addario'),
-   ('EJ45', 2, 0.032, 59, 5.44, 5, 'D''Addario'),
-   ('EJ45', 3, 0.040, 55, 5.40, 5, 'D''Addario'),
-   ('EJ45', 4, 0.029, 50, 7.08, 8, 'D''Addario'),
-   ('EJ45', 5, 0.035, 45, 7.21, 8, 'D''Addario'),
-   ('EJ45', 6, 0.043, 40, 6.44, 8, 'D''Addario'),
-   ('CF128', 1, 0.027, 64, 6.9, 5, 'Thomastik-Infeld'),
-   ('CF128', 2, 0.031, 59, 5.5, 5, 'Thomastik-Infeld'),
-   ('CF128', 3, 0.027, 55, 6.5, 7, 'Thomastik-Infeld'),
-   ('CF128', 4, 0.030, 50, 6.5, 7, 'Thomastik-Infeld'),
-   ('CF128', 5, 0.035, 45, 6.4, 7, 'Thomastik-Infeld'),
-   ('CF128', 6, 0.045, 40, 6.4, 7, 'Thomastik-Infeld')
+   ('EJ45',  1, 0.028, 64,  7.35, 5, 'D''Addario'),
+   ('EJ45',  2, 0.032, 59,  5.44, 5, 'D''Addario'),
+   ('EJ45',  3, 0.040, 55,  5.40, 5, 'D''Addario'),
+   ('EJ45',  4, 0.029, 50,  7.08, 8, 'D''Addario'),
+   ('EJ45',  5, 0.035, 45,  7.21, 8, 'D''Addario'),
+   ('EJ45',  6, 0.043, 40,  6.44, 8, 'D''Addario'),
+   ('CF128', 1, 0.027, 64,   6.9, 5, 'Thomastik-Infeld'),
+   ('CF128', 2, 0.031, 59,   5.5, 5, 'Thomastik-Infeld'),
+   ('CF128', 3, 0.027, 55,   6.5, 7, 'Thomastik-Infeld'),
+   ('CF128', 4, 0.030, 50,   6.5, 7, 'Thomastik-Infeld'),
+   ('CF128', 5, 0.035, 45,   6.4, 7, 'Thomastik-Infeld'),
+   ('CF128', 6, 0.045, 40,   6.4, 7, 'Thomastik-Infeld')
 on conflict do nothing;
 
 -- as dev
@@ -122,3 +122,11 @@ END; $calc_tension$ LANGUAGE plpgsql;
 --       calc_tension_at_length('CF128', 4, 51, 67) as fourth,
 --       calc_tension_at_length('CF128', 5, 44, 67) as fifth;
 
+-- 11    16  | 17 26 35
+-- 10.4 12.4 | 7.9 10.6 7.6
+--select calc_tension_at_length('ECG24', 1, 65, 67) as "first",
+--       calc_tension_at_length('ECG25', 2, 60, 67) as snd,
+--       calc_tension_at_length('ECG26', 2, 55, 67) as third,
+--       calc_tension_at_length('ECG26', 3, 50, 67) as fourth,
+--       calc_tension_at_length('ECG26', 4, 43, 67) as fifth;
+       
