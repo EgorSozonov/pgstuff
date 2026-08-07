@@ -16,12 +16,16 @@ insert into string_tension(
    material_and_winding_e, manufacturer
 ) 
 values
+   ('Bare', 8, 0.008, 64,  4.70, 1, 'Any'),
+   ('Bare', 9, 0.009, 64,  5.95, 1, 'Any'),
+   ('Bare', 18, 0.018, 59, 13.38, 1, 'Any'),
+   ('Bare', 19, 0.019, 59, 14.91, 1, 'Any'),
    ('ECG23', 1,  0.01, 64,  7.35, 1, 'D''Addario'),
    ('ECG23', 2, 0.014, 59,  8.07, 1, 'D''Addario'),
-   ('ECG23', 3,  0.02, 55,  10.8, 2, 'D''Addario'),
-   ('ECG23', 4, 0.028, 50, 11.43, 2, 'D''Addario'),
-   ('ECG23', 5, 0.038, 45, 10.75, 2, 'D''Addario'),
-   ('ECG23', 6, 0.048, 40,  9.71, 2, 'D''Addario'),
+   ('ECG23', 3,  0.02, 55,   9.4, 2, 'D''Addario'),
+   ('ECG23', 4, 0.028, 50,  9.92, 2, 'D''Addario'),
+   ('ECG23', 5, 0.038, 45, 10.12, 2, 'D''Addario'),
+   ('ECG23', 6, 0.048, 40,  9.24, 2, 'D''Addario'),
    ('ECG24', 1, 0.011, 64,  8.89, 1, 'D''Addario'),
    ('ECG24', 2, 0.015, 59,  9.29, 1, 'D''Addario'),
    ('ECG24', 3, 0.022, 55, 13.01, 2, 'D''Addario'),
@@ -124,9 +128,37 @@ END; $calc_tension$ LANGUAGE plpgsql;
 
 -- 11    16  | 17 26 35
 -- 10.4 12.4 | 7.9 10.6 7.6
+-- 22.8      | 25.8
 --select calc_tension_at_length('ECG24', 1, 65, 67) as "first",
 --       calc_tension_at_length('ECG25', 2, 60, 67) as snd,
 --       calc_tension_at_length('ECG26', 2, 55, 67) as third,
 --       calc_tension_at_length('ECG26', 3, 50, 67) as fourth,
 --       calc_tension_at_length('ECG26', 4, 43, 67) as fifth;
+
+-- 11 15 | 17 26w 45w
+--  21.5 | 23.4
+select calc_tension_at_length('ECG24', 1, 64, 67) as "first",
+       calc_tension_at_length('ECG24', 2, 61, 67) as snd,
+       calc_tension_at_length('ECG26', 2, 54, 67) as third,
+       calc_tension_at_length('ECG26', 3, 47, 67) as fourth,
+       calc_tension_at_length('ECG26', 5, 40, 67) as fifth;
        
+       
+--QUINTAR AEBF#B
+-- 12 15 | 17 26w 45w
+--  23.3 | 23.4
+select calc_tension_at_length('ECG25', 1, 64, 67) as "first",
+       calc_tension_at_length('ECG24', 2, 61, 67) as snd,
+       calc_tension_at_length('ECG26', 2, 54, 67) as third,
+       calc_tension_at_length('ECG26', 3, 47, 67) as fourth,
+       calc_tension_at_length('ECG26', 5, 40, 67) as fifth;
+       
+       
+-- 10 14 | 16 19 32w
+--  22.8 | 23.7
+select calc_tension_at_length('ECG23', 1, 67, 67) as "first",
+       calc_tension_at_length('ECG23', 2, 62, 67) as snd,
+       calc_tension_at_length('ECG25', 2, 57, 67) as third,
+       calc_tension_at_length('Bare', 19, 52, 67) as fourth,
+       calc_tension_at_length('ECG25', 4, 45, 67) as fifth;
+
