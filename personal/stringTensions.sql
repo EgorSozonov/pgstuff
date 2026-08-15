@@ -136,8 +136,8 @@ END; $calc_tension$ LANGUAGE plpgsql;
 --       calc_tension_at_length('ECG26', 4, 43, 67) as fifth;
 
 -- 11 15 | 17 26w 45w
---  21.5 | 23.4
-select calc_tension_at_length('ECG24', 1, 64, 67) as "first",
+--  23.9 | 23.4
+select calc_tension_at_length('ECG24', 1, 66, 67) as "first",
        calc_tension_at_length('ECG24', 2, 61, 67) as snd,
        calc_tension_at_length('ECG26', 2, 54, 67) as third,
        calc_tension_at_length('ECG26', 3, 47, 67) as fourth,
@@ -150,6 +150,16 @@ select calc_tension_at_length('ECG24', 1, 64, 67) as "first",
 select calc_tension_at_length('ECG25', 1, 64, 67) as "first",
        calc_tension_at_length('ECG24', 2, 61, 67) as snd,
        calc_tension_at_length('ECG26', 2, 54, 67) as third,
+       calc_tension_at_length('ECG26', 3, 47, 67) as fourth,
+       calc_tension_at_length('ECG26', 5, 40, 67) as fifth;
+       
+       
+--QUINTAR right now
+-- 11 12 | 15 26w 45w
+--  17.1 | 22
+select calc_tension_at_length('ECG24', 1, 64, 67) as "first",
+       calc_tension_at_length('ECG25', 1, 61, 67) as snd,
+       calc_tension_at_length('ECG24', 2, 54, 67) as third,
        calc_tension_at_length('ECG26', 3, 47, 67) as fourth,
        calc_tension_at_length('ECG26', 5, 40, 67) as fifth;
        

@@ -1,2 +1,0 @@
-psql -U postgres -p 5589 < db0.sql
-psql -U %dbname_admin -p 5589 -d %dbname < db1.sql
